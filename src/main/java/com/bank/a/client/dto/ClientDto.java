@@ -1,16 +1,32 @@
 package com.bank.a.client.dto;
 
-import com.bank.a.account.Account;
+import com.bank.a.account.dto.AccountDto;
 import com.sun.istack.NotNull;
 
 import java.util.List;
 
 public class ClientDto {
+    private long client_id;
     @NotNull
     private String first_name;
     @NotNull
     private String last_name;
-    private List<Account> accounts;
+    private List<AccountDto> accounts;
+
+    public ClientDto() {
+    }
+
+    public ClientDto(long client_id) {
+        this.client_id = client_id;
+    }
+
+    public long getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(long client_id) {
+        this.client_id = client_id;
+    }
 
     public String getFirst_name() {
         return first_name;
@@ -28,11 +44,11 @@ public class ClientDto {
         this.last_name = last_name;
     }
 
-    public List<Account> getAccounts() {
+    public List<AccountDto> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
+    public void setAccounts(List<AccountDto> accounts) {
         this.accounts = accounts;
     }
 }

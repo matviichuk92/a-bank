@@ -3,6 +3,7 @@ package com.bank.a.result.handler;
 public class ResultDto {
     private String error;
     private String text;
+    private Object data;
 
     public ResultDto() {
     }

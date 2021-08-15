@@ -1,6 +1,6 @@
 package com.bank.a.account;
 
-import com.bank.a.client.Client;
+import com.bank.a.client.model.Client;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
