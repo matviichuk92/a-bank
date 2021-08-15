@@ -1,9 +1,12 @@
 package com.bank.a.account.dto;
 
+import com.sun.istack.NotNull;
 import java.util.List;
 
 public class AccountRequestDto {
+    @NotNull
     private long client_id;
+    @NotNull
     private List<AccountDto> accounts;
 
     public long getClient_id() {

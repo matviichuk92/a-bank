@@ -16,6 +16,11 @@ public class ClientDto {
     public ClientDto() {
     }
 
+    public ClientDto(String first_name, String last_name) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+    }
+
     public ClientDto(long client_id) {
         this.client_id = client_id;
     }

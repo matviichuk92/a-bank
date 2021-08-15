@@ -48,4 +48,13 @@ public class AccountService {
                 .stream().map(o -> new AccountDto(o.getId(), o.getNumber(), o.getType(), o.getBalance()))
                 .collect(Collectors.toList());
     }
+
+    public Account findAccountById(Long id) {
+        return accountRepository.findAccountById(id);
+    }
+
+    public void saveChangesAfterTransaction(Account sender, Account receipt) {
+        accountRepository.save(sender);
+        accountRepository.save(receipt);
+    }
 }
