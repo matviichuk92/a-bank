@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.bank.a.result.handler.ErrorDictionary.error001;
+import static com.bank.a.result.handler.CodeDictionary.code000;
+import static com.bank.a.result.handler.CodeDictionary.code001;
 
 @RestController
 @RequestMapping(value = "/api/account", produces = "application/json;charset=UTF-8")
@@ -26,11 +27,20 @@ public class AccountController {
     private Gson gson;
 
     @PostMapping("/create")
-    public String createClient(@RequestBody AccountRequestDto accountDtoList) {
+    public String createAccounts(@RequestBody AccountRequestDto accountDtoList) {
         Client client = clientService.findClientById(accountDtoList.getClient_id());
         if (client == null) {
-            return gson.toJson(error001);
+            return gson.toJson(code001);
         }
-        return gson.toJson(accountService.createAccounts(accountDtoList.getAccounts(), client));
+        return gson.toJson(code000.addData(accountService.createAccounts(accountDtoList.getAccounts(), client)));
+    }
+
+    @PostMapping("/search")
+    public String searchAccountsByClientId(@RequestBody AccountRequestDto accountDtoList) {
+        Client client = clientService.findClientById(accountDtoList.getClient_id());
+        if (client == null) {
+            return gson.toJson(code001);
+        }
+        return gson.toJson(code000.addData(accountService.findListAccountsByClientId(client)));
     }
 }

@@ -16,6 +16,13 @@ public class AccountDto {
         this.account_id = account_id;
     }
 
+    public AccountDto(long account_id, String account_num, String account_type, BigDecimal balance) {
+        this.account_id = account_id;
+        this.account_num = account_num;
+        this.account_type = account_type;
+        this.balance = balance;
+    }
+
     public String getAccount_num() {
         return account_num;
     }

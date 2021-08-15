@@ -11,14 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
-
-    @Autowired
-    private Gson gson;
 
     public AccountResponseDto createAccounts(List<AccountDto> accounts, Client client) {
         List<String> numbersHasAccountsInDb = new ArrayList<>();
@@ -43,5 +41,11 @@ public class AccountService {
         accountResponseDto.setNumbersAlreadyHasAccounts(numbersHasAccountsInDb);
         accountResponseDto.setNewAccountsWasCreatedByNumbers(newAccountsList);
         return accountResponseDto;
+    }
+
+    public List<AccountDto> findListAccountsByClientId(Client client) {
+        return accountRepository.findAllByClient(client)
+                .stream().map(o -> new AccountDto(o.getId(), o.getNumber(), o.getType(), o.getBalance()))
+                .collect(Collectors.toList());
     }
 }

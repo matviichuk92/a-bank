@@ -1,24 +1,37 @@
 package com.bank.a.result.handler;
 
 public class ResultDto {
-    private String error;
+    private String code;
     private String text;
     private Object data;
 
     public ResultDto() {
     }
 
-    public ResultDto(String error, String text) {
-        this.error = error;
+    public ResultDto(String code, String text) {
+        this.code = code;
         this.text = text;
     }
 
-    public String getError() {
-        return error;
+    public Object getData() {
+        return data;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setData(Object data) {
+        this.data = data;
+    }
+
+    public ResultDto addData(Object data) {
+        this.data = data;
+        return this;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getText() {
