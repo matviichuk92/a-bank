@@ -1,13 +1,21 @@
 package com.bank.a.payment.dto;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
-@XmlRootElement
+@XmlRootElement(name = "payment")
+@XmlAccessorType(XmlAccessType.NONE)
 public class PaymentDto {
+    @XmlElement
     private long source_acc_id;
+    @XmlElement
     private long dest_acc_id;
+    @XmlElement
     private BigDecimal amount;
+    @XmlElement
     private String reason;
 
     public PaymentDto() {
@@ -43,5 +51,15 @@ public class PaymentDto {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    @Override
+    public String toString() {
+        return "PaymentDto{" +
+                "source_acc_id=" + source_acc_id +
+                ", dest_acc_id=" + dest_acc_id +
+                ", amount=" + amount +
+                ", reason='" + reason + '\'' +
+                '}';
     }
 }

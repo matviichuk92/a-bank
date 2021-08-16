@@ -1,8 +1,7 @@
 package com.bank.a.payment.controller;
 
-import java.math.BigDecimal;
-import java.util.List;
 import com.bank.a.payment.dto.PaymentDto;
+import com.bank.a.payment.dto.PaymentList;
 import com.bank.a.payment.dto.PaymentSearchDto;
 import com.bank.a.payment.service.PaymentSearchService;
 import com.bank.a.payment.service.PaymentService;
@@ -13,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.math.BigDecimal;
+import java.util.List;
+
 import static com.bank.a.result.handler.CodeDictionary.code000;
 
 @RestController
@@ -34,8 +36,9 @@ public class PaymentController {
     }
 
     @PostMapping("/create/multiple")
-    public String createMultiplePayments(@RequestBody List<PaymentDto> payments) {
-        return gson.toJson(code000.addData(paymentService.makePayments(payments)));
+    public String createMultiplePayments(@RequestBody PaymentList payments) {
+        System.out.println(payments.toString());
+        return gson.toJson(code000.addData(paymentService.makePayments(payments.getPayments())));
     }
 
     @PostMapping("/search/status")
@@ -51,13 +54,10 @@ public class PaymentController {
         return gson.toJson(code000.addData(paymentSearchService.receiveAllPaymentsByClients(senderId, recipientId)));
     }
 
-    @PostMapping("/search/amount")
+    @PostMapping("/search/date/amount")
     public String searchPaymentsByAmountAndTime(@RequestBody PaymentSearchDto paymentSearchDto) {
         BigDecimal amount = paymentSearchDto.getAmount();
         Long timestamp = paymentSearchDto.getTimestamp();
         return gson.toJson(code000.addData(paymentSearchService.findAllByAmountAndTime(amount, timestamp)));
     }
-
-
-
 }

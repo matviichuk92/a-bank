@@ -3,7 +3,7 @@ package com.bank.a.payment.dto;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
-@XmlRootElement
+@XmlRootElement(name = "paymentSearch")
 public class PaymentSearchDto {
     private Long payer_id;
     private Long recipient_id;

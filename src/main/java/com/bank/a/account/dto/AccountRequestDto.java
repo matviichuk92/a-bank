@@ -2,14 +2,19 @@ package com.bank.a.account.dto;
 
 import com.sun.istack.NotNull;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class AccountRequestDto {
     @NotNull
     private long client_id;
     @NotNull
+    @XmlElement(name="accounts")
     private List<AccountDto> accounts;
 
     public AccountRequestDto() {

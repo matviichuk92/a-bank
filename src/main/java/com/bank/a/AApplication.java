@@ -37,6 +37,4 @@ public class AApplication {
         GsonBuilder gsonBuilder = new GsonBuilder();
         return gsonBuilder.create();
     }
-
-
 }

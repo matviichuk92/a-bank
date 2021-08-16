@@ -25,14 +25,13 @@ public class PaymentService {
     private Gson gson;
 
     public static final String OK_STATUS = "ok";
-    public static final String ERROR_STATUS = "error_status";
+    public static final String ERROR_STATUS = "error";
 
-    public String makePayments(List<PaymentDto> paymentDto) {
+    public Map<Long, String> makePayments(List<PaymentDto> paymentDto) {
         Map<Long, String> paymentsResult = new HashMap<>();
         for (PaymentDto record : paymentDto) {
             Payment payment = new Payment();
             payment.setStatus(OK_STATUS);
-
             checkingValidParameters(payment, record);
             payment.setSenderAccount(record.getSource_acc_id());
             payment.setRecipientAccount(record.getDest_acc_id());
@@ -43,7 +42,7 @@ public class PaymentService {
 
             paymentsResult.put(payment.getId(), payment.getStatus());
         }
-        return gson.toJson(paymentsResult);
+        return paymentsResult;
     }
 
     private void checkingValidParameters(Payment payment, PaymentDto paymentSingle) {

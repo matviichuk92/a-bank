@@ -1,12 +1,16 @@
 package com.bank.a.account.dto;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
-@XmlRootElement
+@XmlRootElement(name = "AccountDto")
+@XmlAccessorType (XmlAccessType.NONE)
 public class AccountDto {
     private long account_id;
+    @XmlElement(name = "account_num")
     private String account_num;
+    @XmlElement(name = "account_type")
     private String account_type;
+    @XmlElement(name = "balance")
     private BigDecimal balance;
 
     public AccountDto() {
