@@ -22,6 +22,9 @@ public class Payment {
     @OneToOne
     private Client recipient;
 
+    public Payment() {
+    }
+
     public Client getSender() {
         return sender;
     }

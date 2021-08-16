@@ -6,16 +6,17 @@ import com.bank.a.client.model.Client;
 import com.bank.a.client.service.ClientService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import static com.bank.a.result.handler.CodeDictionary.code000;
 import static com.bank.a.result.handler.CodeDictionary.code001;
 
 @RestController
-@RequestMapping(value = "/api/account", produces = "application/json;charset=UTF-8")
+@RequestMapping(value = "/api/account", produces = MediaType.APPLICATION_XML_VALUE,
+        consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 public class AccountController {
     @Autowired
     private AccountService accountService;

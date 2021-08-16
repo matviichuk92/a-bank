@@ -1,7 +1,9 @@
 package com.bank.a.payment.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+@XmlRootElement
 public class PaymentSearchDto {
     private Long payer_id;
     private Long recipient_id;
@@ -9,6 +11,8 @@ public class PaymentSearchDto {
     private Long timestamp;
     private String status;
 
+    public PaymentSearchDto() {
+    }
 
     public Long getPayer_id() {
         return payer_id;

@@ -1,11 +1,10 @@
 package com.bank.a.account.service;
 
-import com.bank.a.account.Account;
+import com.bank.a.account.model.Account;
 import com.bank.a.account.dto.AccountDto;
 import com.bank.a.account.dto.AccountResponseDto;
 import com.bank.a.account.repository.AccountRepository;
 import com.bank.a.client.model.Client;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

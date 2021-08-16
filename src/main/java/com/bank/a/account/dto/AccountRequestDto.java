@@ -1,13 +1,19 @@
 package com.bank.a.account.dto;
 
 import com.sun.istack.NotNull;
+
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+@XmlRootElement
 public class AccountRequestDto {
     @NotNull
     private long client_id;
     @NotNull
     private List<AccountDto> accounts;
+
+    public AccountRequestDto() {
+    }
 
     public long getClient_id() {
         return client_id;

@@ -1,12 +1,17 @@
 package com.bank.a.payment.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+@XmlRootElement
 public class PaymentDto {
     private long source_acc_id;
     private long dest_acc_id;
     private BigDecimal amount;
     private String reason;
+
+    public PaymentDto() {
+    }
 
     public long getSource_acc_id() {
         return source_acc_id;

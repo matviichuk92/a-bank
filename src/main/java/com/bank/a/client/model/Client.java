@@ -11,6 +11,9 @@ public class Client {
     private String name;
     private String surname;
 
+    public Client() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -35,12 +38,4 @@ public class Client {
         this.surname = surname;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
-    }
 }

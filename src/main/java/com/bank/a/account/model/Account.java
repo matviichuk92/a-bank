@@ -1,7 +1,6 @@
-package com.bank.a.account;
+package com.bank.a.account.model;
 
 import com.bank.a.client.model.Client;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -9,13 +8,16 @@ import java.math.BigDecimal;
 @Table(name = "accounts")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String number;
     private String type;
     private BigDecimal balance;
     @ManyToOne
     private Client client;
+
+    public Account() {
+    }
 
     public long getId() {
         return id;

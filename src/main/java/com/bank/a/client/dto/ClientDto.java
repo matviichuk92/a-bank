@@ -1,15 +1,13 @@
 package com.bank.a.client.dto;
 
 import com.bank.a.account.dto.AccountDto;
-import com.sun.istack.NotNull;
-
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+@XmlRootElement
 public class ClientDto {
     private long client_id;
-    @NotNull
     private String first_name;
-    @NotNull
     private String last_name;
     private List<AccountDto> accounts;
 

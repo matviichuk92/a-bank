@@ -1,6 +1,6 @@
 package com.bank.a.payment.service;
 
-import com.bank.a.account.Account;
+import com.bank.a.account.model.Account;
 import com.bank.a.account.service.AccountService;
 import com.bank.a.payment.dto.PaymentDto;
 import com.bank.a.payment.model.Payment;
@@ -8,7 +8,6 @@ import com.bank.a.payment.repository.PaymentRepository;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +56,8 @@ public class PaymentService {
         if (sender != null && recipient != null) {
             payment.setSender(sender.getClient());
             payment.setRecipient(recipient.getClient());
-            if (sender.getBalance().compareTo(paymentSingle.getAmount()) > 0) {
+            if (sender.getBalance().compareTo(paymentSingle.getAmount()) < 0) {
+                System.out.println("");
                 payment.setStatus(ERROR_STATUS);
             } else if (BigDecimal.ZERO.compareTo(paymentSingle.getAmount()) > 0) {
                 payment.setStatus(ERROR_STATUS);
@@ -72,3 +72,4 @@ public class PaymentService {
         }
     }
 }
+
